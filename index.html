@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title>do i have free time?</title>
+</head>
+
+<script type="text/javascript">
+    var age, workHours, sleep, drinking, smoking;
+    var avgAge = 71;
+    var weeksInYear = 52; // weeks
+    var daysInYear = 365; // days
+    var hoursInDay = 24; // hours
+    var hoursToMinutes = 60; // minutes
+    var cigDeath = 13.8; // minutes
+    var drinkDeath = 6.6; // hours
+
+    function onLoad() {
+        age = document.getElementById('age');
+        workHours = document.getElementById('workHours');
+        sleep = document.getElementById('sleep');
+        drinking = document.getElementById('drinking');
+        smoking = document.getElementById('smoking');
+    }
+
+    function calculate(){
+        var freeTime = (avgAge - age.value) * daysInYear * hoursInDay * hoursToMinutes
+                - workHours.value * weeksInYear * hoursToMinutes
+                - sleep.value * daysInYear * hoursToMinutes
+                - drinking.value * drinkDeath * daysInYear * hoursToMinutes
+                - smoking.value * cigDeath * daysInYear;
+
+        alert("you have " + freeTime + " minutes of free time. use it wisely.");
+        alert("which is " + freeTime / hoursToMinutes / hoursInDay / daysInYear + " years.");
+    }
+
+    function ageInMinutes(time) {
+        var newTime = time * daysInYear * hoursInDay * hoursToMinutes;
+        return newTime;
+    }
+</script>
+
+<body onload="onLoad()">
+<div class="container-fluid">
+    <h1>do i have free time?</h1>
+    <h2>average life span is 71 years</h2>
+
+    <form>
+        <div class="form-group">
+            <label for="age">age</label>
+            <input type="number" class="form-control" id="age" aria-describedby="how old are you?" placeholder="25">
+        </div>
+        <div class="form-group">
+            <label for="workHours">hours worked / week</label>
+            <input type="number" class="form-control" id="workHours"
+                   aria-describedby="how many hours do you work per week?" placeholder="40">
+        </div>
+        <div class="form-group">
+            <label for="sleep">sleep</label>
+            <input type="number" class="form-control" id="sleep"
+                   aria-describedby="on average, how many hours a day do you sleep?" placeholder="8">
+        </div>
+        <div class="form-group">
+            <label for="drinking">how much do you drink?</label>
+            <input type="number" class="form-control" id="drinking"
+                   aria-describedby="on average, how much do you drink a day (in beer)?" placeholder="2">
+        </div>
+        <div class="form-group">
+            <label for="smoking">how much do you smoke?</label>
+            <input type="number" class="form-control" id="smoking"
+                   aria-describedby="on average, how many cigarettes a day?" placeholder="5">
+        </div>
+        <button type="submit" class="btn btn-primary" value="click" onclick="calculate()">submit</button>
+    </form>
+</div>
+</body>
+
+</html>
