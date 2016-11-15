@@ -4,74 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 
     <title>do i have free time?</title>
 </head>
 
-<script type="text/javascript">
-    var age, workHours, sleep, drinking, smoking;
-    var avgAge = 71;
-    var daysInYear = 365.25; // days
-    var hoursInDay = 24; // hours
-    var minutesInHour = 60; // minutes
-    var cigDeath = 13.8; // minutes
-    var drinkDeath = 6.6; // hours
-
-    function onLoad() {
-        age = document.getElementById('age');
-        workHours = document.getElementById('workHours');
-        sleep = document.getElementById('sleep');
-        drinking = document.getElementById('drinking');
-        smoking = document.getElementById('smoking');
-    }
-
-    function calculate(){
-        var freeTimeInDay = (hoursInDay - sleep.value - (workHours.value / 7)); // hours
-        var freeTimeInYear = freeTimeInDay * daysInYear; // hours
-        var freeTimeRestOfLife = freeTimeInYear * (avgAge - age.value); // hours
-
-        alert("you have " + freeTimeRestOfLife / hoursInDay / daysInYear + " years of free time.");
-        alert("you have " + freeTimeRestOfLife / hoursInDay + " days of free time.");
-        alert("you have " + freeTimeRestOfLife + " hours of free time.");
-        alert("you have " + freeTimeRestOfLife  * minutesInHour+ " minutes of free time.");
-    }
-</script>
-
 <body onload="onLoad()">
-<div class="container-fluid">
-    <h1>do i have free time?</h1>
-    <h2>average life span is 71 years</h2>
+<div class="container Absolute-Center is-Responsive">
 
-    <form>
-        <div class="form-group">
+    <h1>do i have free time?</h1>
+    <h4>average life span is 71 years</h4>
+
+    <div class="row" style="text-align: center;">
+        <div class="col-md-4">
             <label for="age">age</label>
-            <input type="number" class="form-control" id="age" aria-describedby="how old are you?" placeholder="25">
+            <input type="number" class="form-control" id="age" placeholder="25">
         </div>
-        <div class="form-group">
-            <label for="workHours">hours worked / week</label>
-            <input type="number" class="form-control" id="workHours"
-                   aria-describedby="how many hours do you work per week?" placeholder="40">
+        <div class="col-md-4">
+            <label for="workHours">work per week</label>
+            <input type="number" class="form-control" id="workHours" placeholder="40">
         </div>
-        <div class="form-group">
+        <div class="col-md-4">
             <label for="sleep">sleep</label>
-            <input type="number" class="form-control" id="sleep"
-                   aria-describedby="on average, how many hours a day do you sleep?" placeholder="8">
+            <input type="number" class="form-control" id="sleep" placeholder="8">
         </div>
-        <!--<div class="form-group">-->
-            <!--<label for="drinking">how much do you drink?</label>-->
-            <!--<input type="number" class="form-control" id="drinking"-->
-                   <!--aria-describedby="on average, how much do you drink a day (in beer)?" placeholder="2">-->
+    </div>
+
+    <!--<div class="row" style="text-align: center;">-->
+        <!--<div class="col-md-6">-->
+            <!--<label class="checkbox">-->
+                <!--<input type="checkbox" id="smoking"> smoke?-->
+            <!--</label>-->
         <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label for="smoking">how much do you smoke?</label>-->
-            <!--<input type="number" class="form-control" id="smoking"-->
-                   <!--aria-describedby="on average, how many cigarettes a day?" placeholder="5">-->
+        <!--<div class="col-md-6">-->
+            <!--<label class="checkbox">-->
+                <!--<input type="checkbox" id="drinking"> drink?-->
+            <!--</label>-->
         <!--</div>-->
+    <!--</div>-->
+
+    <div class="row" style="text-align: center;">
+        <br>
         <button type="submit" class="btn btn-primary" value="click" onclick="calculate()">submit</button>
-    </form>
+        <button type="reset" class="btn btn-secondary" value="click" onclick="resetValues()">reset</button>
+    </div>
 </div>
 </body>
 
