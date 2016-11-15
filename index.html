@@ -14,10 +14,9 @@
 <script type="text/javascript">
     var age, workHours, sleep, drinking, smoking;
     var avgAge = 71;
-    var weeksInYear = 52; // weeks
-    var daysInYear = 365; // days
+    var daysInYear = 365.25; // days
     var hoursInDay = 24; // hours
-    var hoursToMinutes = 60; // minutes
+    var minutesInHour = 60; // minutes
     var cigDeath = 13.8; // minutes
     var drinkDeath = 6.6; // hours
 
@@ -30,19 +29,14 @@
     }
 
     function calculate(){
-        var freeTime = (avgAge - age.value) * daysInYear * hoursInDay * hoursToMinutes
-                - workHours.value * weeksInYear * hoursToMinutes
-                - sleep.value * daysInYear * hoursToMinutes
-                - drinking.value * drinkDeath * daysInYear * hoursToMinutes
-                - smoking.value * cigDeath * daysInYear;
+        var freeTimeInDay = (hoursInDay - sleep.value - (workHours.value / 7)); // hours
+        var freeTimeInYear = freeTimeInDay * daysInYear; // hours
+        var freeTimeRestOfLife = freeTimeInYear * (avgAge - age.value); // hours
 
-        alert("you have " + freeTime + " minutes of free time. use it wisely.");
-        alert("which is " + freeTime / hoursToMinutes / hoursInDay / daysInYear + " years.");
-    }
-
-    function ageInMinutes(time) {
-        var newTime = time * daysInYear * hoursInDay * hoursToMinutes;
-        return newTime;
+        alert("you have " + freeTimeRestOfLife / hoursInDay / daysInYear + " years of free time.");
+        alert("you have " + freeTimeRestOfLife / hoursInDay + " days of free time.");
+        alert("you have " + freeTimeRestOfLife + " hours of free time.");
+        alert("you have " + freeTimeRestOfLife  * minutesInHour+ " minutes of free time.");
     }
 </script>
 
@@ -66,16 +60,16 @@
             <input type="number" class="form-control" id="sleep"
                    aria-describedby="on average, how many hours a day do you sleep?" placeholder="8">
         </div>
-        <div class="form-group">
-            <label for="drinking">how much do you drink?</label>
-            <input type="number" class="form-control" id="drinking"
-                   aria-describedby="on average, how much do you drink a day (in beer)?" placeholder="2">
-        </div>
-        <div class="form-group">
-            <label for="smoking">how much do you smoke?</label>
-            <input type="number" class="form-control" id="smoking"
-                   aria-describedby="on average, how many cigarettes a day?" placeholder="5">
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label for="drinking">how much do you drink?</label>-->
+            <!--<input type="number" class="form-control" id="drinking"-->
+                   <!--aria-describedby="on average, how much do you drink a day (in beer)?" placeholder="2">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="smoking">how much do you smoke?</label>-->
+            <!--<input type="number" class="form-control" id="smoking"-->
+                   <!--aria-describedby="on average, how many cigarettes a day?" placeholder="5">-->
+        <!--</div>-->
         <button type="submit" class="btn btn-primary" value="click" onclick="calculate()">submit</button>
     </form>
 </div>
