@@ -1,3 +1,9 @@
+/*
+author: jeffrey lecompte
+github: https://github.com/jeffreylec
+website: https://jef.rocks
+*/
+
 $(document).ready(function () {
     var age, workHours, sleep, drinking, smoking, freeTimeInDay, freeTimeInYear, freeTimeRestOfLife;
     var avgAge = 71;
