@@ -1,34 +1,92 @@
-var age, workHours, sleep, drinking, smoking;
-var avgAge = 71;
-var daysInYear = 365.25; // days
-var hoursInDay = 24; // hours
-var minutesInHour = 60; // minutes
-var cigDeath = 13.8; // minutes
-var drinkDeath = 6.6; // hours
+$(document).ready(function () {
+    var age, workHours, sleep, drinking, smoking, freeTimeInDay, freeTimeInYear, freeTimeRestOfLife;
+    var avgAge = 71;
+    var daysInYear = 365.25; // days
+    var hoursInDay = 24; // hours
+    var minutesInHour = 60; // minutes
+    var cigDeath = 13.8; // minutes
+    var drinkDeath = 6.6; // hours
 
-function onLoad() {
-    age = document.getElementById('age');
-    workHours = document.getElementById('workHours');
-    sleep = document.getElementById('sleep');
-    drinking = document.getElementById('drinking');
-    smoking = document.getElementById('smoking');
-}
+    $('#submitButton').click(function () {
+        age = $('#age').val();
+        workHours = $('#workHours').val();
+        sleep = $('#sleep').val();
+        drinking = $('#drinking').val();
+        smoking = $('#smoking').val();
 
-function calculate() {
-    var freeTimeInDay = (hoursInDay - sleep.value - (workHours.value / 7)); // hours
-    var freeTimeInYear = freeTimeInDay * daysInYear; // hours
-    var freeTimeRestOfLife = freeTimeInYear * (avgAge - age.value); // hours
+        freeTimeInDay = (hoursInDay - sleep - (workHours / 7)); // hours
+        freeTimeInYear = freeTimeInDay * daysInYear; // hours
+        freeTimeRestOfLife = freeTimeInYear * (avgAge - age); // hours
 
-    alert("you have " + freeTimeRestOfLife / hoursInDay / daysInYear + " years of free time.");
-    alert("you have " + freeTimeRestOfLife / hoursInDay + " days of free time.");
-    alert("you have " + freeTimeRestOfLife + " hours of free time.");
-    alert("you have " + freeTimeRestOfLife * minutesInHour + " minutes of free time.");
-}
+        $('#freeTimeDiv').css({
+            "display": "inline",
+            "text-align": "center"
+        });
 
-function resetValues() {
-    age.value = age.defaultValue;
-    workHours.value = workHours.defaultValue;
-    sleep.value = sleep.defaultValue;
-    drinking.value = drinking.defaultValue;
-    $('input[type=checkbox]').prop('checked', false);
-}
+        $('#buttonYears').addClass('btn-primary');
+        $('#buttonDays').removeClass('btn-primary');
+        $('#buttonHours').removeClass('btn-primary');
+        $('#buttonMinutes').removeClass('btn-primary');
+
+        var time = (Math.round(((freeTimeRestOfLife / hoursInDay / daysInYear) * 1000)/10)/100).toFixed(2);
+
+        $('#freeTimeSentence')
+            .text("You have " + time + " years of free time");
+    });
+
+    $('#buttonYears').click(function () {
+        $('#buttonYears').addClass('btn-primary');
+        $('#buttonDays').removeClass('btn-primary');
+        $('#buttonHours').removeClass('btn-primary');
+        $('#buttonMinutes').removeClass('btn-primary');
+
+        var time = (Math.round(((freeTimeRestOfLife / hoursInDay / daysInYear) * 1000)/10)/100).toFixed(2);
+
+        $('#freeTimeSentence')
+            .text("you have " + time + " years of free time");
+    });
+
+    $('#buttonDays').click(function () {
+        $('#buttonYears').removeClass('btn-primary');
+        $('#buttonDays').addClass('btn-primary');
+        $('#buttonHours').removeClass('btn-primary');
+        $('#buttonMinutes').removeClass('btn-primary');
+
+        var time = (Math.round(((freeTimeRestOfLife / hoursInDay) * 1000)/10)/100).toFixed(2);
+
+        $('#freeTimeSentence')
+            .text("you have " + time + " days of free time");
+    });
+
+    $('#buttonHours').click(function () {
+        $('#buttonYears').removeClass('btn-primary');
+        $('#buttonDays').removeClass('btn-primary');
+        $('#buttonHours').addClass('btn-primary');
+        $('#buttonMinutes').removeClass('btn-primary');
+
+        var time = (Math.round(((freeTimeRestOfLife) * 1000)/10)/100).toFixed(2);
+
+        $('#freeTimeSentence')
+            .text("you have " + time + " days of free time");
+    });
+
+    $('#buttonMinutes').click(function () {
+        $('#buttonYears').removeClass('btn-primary');
+        $('#buttonDays').removeClass('btn-primary');
+        $('#buttonHours').removeClass('btn-primary');
+        $('#buttonMinutes').addClass('btn-primary');
+
+        var time = (Math.round(((freeTimeRestOfLife * minutesInHour) * 1000)/10)/100).toFixed(2);
+
+        $('#freeTimeSentence')
+            .text("you have " + time + " days of free time");
+    });
+
+    $('#clearButton').click(function () {
+        $('#age').val("");
+        $('#workHours').val("");
+        $('#sleep').val("");
+        $('#freeTimeNumber').text("");
+        $('input[type=checkbox]').prop('checked', false);
+    });
+});

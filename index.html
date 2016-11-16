@@ -13,46 +13,70 @@
     <title>do i have free time?</title>
 </head>
 
-<body onload="onLoad()">
+<body>
+
+<ul id="social_side_links">
+    <li><a style="background-color: #3c5a96;" href="https://www.facebook.com/sharer/sharer.php?u=https://hijef.com/doihavefreetime" target="_blank">
+        <img src="images/facebook-icon.png"/></a></li>
+    <li><a style="background-color: #1dadeb;" href="https://twitter.com/intent/tweet?text=How+much+free+time+do+we+really+have%3F+https://hijef.com/doihavefreetime" target="_blank">
+        <img src="images/twitter-icon.png"/></a></li>
+</ul>
+
 <div class="container Absolute-Center is-Responsive" id="main">
 
     <h1>do i have free time?</h1>
     <h4>average life span is 71 years</h4>
 
-    <div class="row" style="text-align: center;">
+    <div class="row" style="text-align:center;">
         <div class="col-md-4">
             <label for="age">age</label>
-            <input type="number" class="form-control" id="age" placeholder="25">
+            <input id="age" type="number" class="form-control" placeholder="years">
         </div>
         <div class="col-md-4">
-            <label for="workHours">work per week</label>
-            <input type="number" class="form-control" id="workHours" placeholder="40">
+            <label for="workHours">work / week</label>
+            <input id="workHours" type="number" class="form-control" placeholder="hours">
         </div>
         <div class="col-md-4">
             <label for="sleep">sleep</label>
-            <input type="number" class="form-control" id="sleep" placeholder="8">
+            <input id="sleep" type="number" class="form-control" placeholder="hours">
         </div>
     </div>
 
     <!--<div class="row" style="text-align: center;">-->
-        <!--<div class="col-md-6">-->
-            <!--<label class="checkbox">-->
-                <!--<input type="checkbox" id="smoking"> smoke?-->
-            <!--</label>-->
-        <!--</div>-->
-        <!--<div class="col-md-6">-->
-            <!--<label class="checkbox">-->
-                <!--<input type="checkbox" id="drinking"> drink?-->
-            <!--</label>-->
-        <!--</div>-->
+    <!--<div class="col-md-6">-->
+    <!--<label class="checkbox">-->
+    <!--<input type="checkbox" id="smoking"> smoke?-->
+    <!--</label>-->
+    <!--</div>-->
+    <!--<div class="col-md-6">-->
+    <!--<label class="checkbox">-->
+    <!--<input type="checkbox" id="drinking"> drink?-->
+    <!--</label>-->
+    <!--</div>-->
     <!--</div>-->
 
-    <div class="row" style="text-align: center;">
+    <div class="row" style="text-align:center;">
         <br>
-        <button type="submit" class="btn btn-primary" value="click" onclick="calculate()">submit</button>
-        <button type="reset" class="btn btn-secondary" value="click" onclick="resetValues()">reset</button>
+        <button id="submitButton" type="button" class="btn btn-primary">submit</button>
+        <button id="clearButton" type="button" class="btn btn-default">clear</button>
+    </div>
+
+    <div id="freeTimeDiv" class="row" style="display:none;">
+        <div class="row">
+            <button id="buttonYears" type="button" class="btn btn-default">years</button>
+            <button id="buttonDays" type="button" class="btn btn-default">days</button>
+            <button id="buttonHours" type="button" class="btn btn-default">hours</button>
+            <button id="buttonMinutes" type="button" class="btn btn-default">minutes</button>
+        </div>
+        <p id="freeTimeSentence" style="margin:10px;"></p>
+        <p style="font-style: italic; font-size:10px;">use it wisely</p>
     </div>
 </div>
+
+<div class="footer">
+    <p style="font-size: 10px;">made by <a href="https://hijef.com">jef</a> 🍦 have a question or concern? report it <a href="https://github.com/jeffreylec/doihavefreetime/issues">here</a>.</p>
+</div>
+</nav>
 </body>
 
 </html>
