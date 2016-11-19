@@ -5,8 +5,8 @@ website: https://jef.rocks
 */
 
 $(document).ready(function () {
-    var age, workHours, sleep, drinking, smoking, freeTimeInDay, freeTimeInYear, freeTimeRestOfLife;
-    var avgAge = 71;
+    var age, workHours, sleep, drinking, smoking, freeTimeInDay, freeTimeInYear, freeTimeRestOfLife,
+        maleFemale, avgAge;
     var daysInYear = 365.25; // days
     var hoursInDay = 24; // hours
     var minutesInHour = 60; // minutes
@@ -19,15 +19,21 @@ $(document).ready(function () {
         sleep = $('#sleep').val();
         drinking = $('#drinking').val();
         smoking = $('#smoking').val();
+        maleFemale = $('input[name=maleFemale]:checked').val();
+
+        if (maleFemale === "male") avgAge = 76;
+        if (maleFemale === "female") avgAge = 81;
+        else avgAge = (76 + 81) / 2;
 
         freeTimeInDay = (hoursInDay - sleep - (workHours / 7)); // hours
         freeTimeInYear = freeTimeInDay * daysInYear; // hours
         freeTimeRestOfLife = freeTimeInYear * (avgAge - age); // hours
 
-        $('#freeTimeDiv').css({
-            "display": "inline",
-            "text-align": "center"
-        });
+        // $('#freeTimeDiv').css({
+        //     "display": "inline"
+        // });
+
+        $('#freeTimeDiv').fadeIn('slow');
 
         $('#buttonYears').addClass('btn-primary');
         $('#buttonDays').removeClass('btn-primary');
@@ -38,6 +44,21 @@ $(document).ready(function () {
 
         $('#freeTimeSentence')
             .text("You have " + time + " years of free time");
+    });
+
+    $('#clearButton').click(function () {
+        $('#age').val("");
+        $('#workHours').val("");
+        $('#sleep').val("");
+        $('#freeTimeNumber').text("");
+        $('input[type=checkbox]').prop('checked', false);
+        $('input[type=radio]').prop('checked', false);
+
+        // $('#freeTimeDiv').css({
+        //     "display": "none"
+        // });
+
+        $('#freeTimeDiv').fadeOut('1000');
     });
 
     $('#buttonYears').click(function () {
@@ -88,11 +109,4 @@ $(document).ready(function () {
             .text("you have " + time + " days of free time");
     });
 
-    $('#clearButton').click(function () {
-        $('#age').val("");
-        $('#workHours').val("");
-        $('#sleep').val("");
-        $('#freeTimeNumber').text("");
-        $('input[type=checkbox]').prop('checked', false);
-    });
 });
