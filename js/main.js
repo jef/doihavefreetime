@@ -37,7 +37,8 @@ $(document).ready(function () {
         if (retireAge > 0) freeTimeAfterRetire = (avgAge - retireAge) * hoursInDay * daysInYear; // hours for x years
         else freeTimeAfterRetire = 0;
 
-        freeTimeInDay = hoursInDay - sleep - (workHours / 7) - (chores / 7); // hours
+        freeTimeInDay = hoursInDay - sleep - (workHours / 7)
+            - (chores / 7) - ((smoking * cigDeath) / 60) - ((drinking * drinkDeath) / 7); // hours
         freeTimeInYear = freeTimeInDay * daysInYear; // hours
         freeTimeRestOfLife = freeTimeInYear * (avgAge - age)
             + freeTimeAfterRetire + freeTimeVacation; // hours
