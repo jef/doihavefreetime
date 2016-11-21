@@ -6,7 +6,7 @@ website: https://jef.rocks
 
 $(document).ready(function () {
     var age, workHours, sleep, drinking, smoking, freeTimeInDay, freeTimeInYear, freeTimeRestOfLife,
-        maleFemale, avgAge, vacationWork, chores, retireAge;
+        maleFemale, avgAge, vacationWork, chores, retireAge, freeTimeVacation, freeTimeAfterRetire;
     var daysInYear = 365.25; // days
     var hoursInDay = 24; // hours
     var minutesInHour = 60; // minutes
@@ -26,14 +26,19 @@ $(document).ready(function () {
 
         // male or female
         if (maleFemale === "male") avgAge = 76;
-        if (maleFemale === "female") avgAge = 81;
+        else if (maleFemale === "female") avgAge = 81;
         else avgAge = (76 + 81) / 2;
 
+        console.log(maleFemale);
+        console.log(avgAge);
+
         // calculate total vacation
-        var freeTimeVacation = (workHours * vacationWork) * (avgAge - age);
+        if (vacationWork > 0) freeTimeVacation = (workHours * vacationWork) * (avgAge - age);
+        else freeTimeVacation = 0;
 
         // calculate retirement
-        var freeTimeAfterRetire = (avgAge - retireAge) * hoursInDay * daysInYear; // hours for x years
+        if (retireAge > 0) freeTimeAfterRetire = (avgAge - retireAge) * hoursInDay * daysInYear; // hours for x years
+        else freeTimeAfterRetire = 0;
 
         freeTimeInDay = hoursInDay - sleep - (workHours / 7) - (chores / 7); // hours
         freeTimeInYear = freeTimeInDay * daysInYear; // hours
@@ -50,16 +55,13 @@ $(document).ready(function () {
         var time = (Math.round(((freeTimeRestOfLife / hoursInDay / daysInYear) * 1000)/10)/100).toFixed(2);
 
         $('#freeTimeSentence')
-            .text("You have " + time + " years of free time");
+            .text("you have " + time + " years of free time");
     });
 
     $('#clearButton').click(function () {
-        $('#age').val("");
-        $('#workHours').val("");
-        $('#sleep').val("");
-        $('#freeTimeNumber').text("");
         $('input[type=checkbox]').prop('checked', false);
         $('input[type=radio]').prop('checked', false);
+        $('input[type=number]').val("");
 
         // $('#freeTimeDiv').css({
         //     "display": "none"
@@ -101,7 +103,7 @@ $(document).ready(function () {
         var time = (Math.round(((freeTimeRestOfLife) * 1000)/10)/100).toFixed(2);
 
         $('#freeTimeSentence')
-            .text("you have " + time + " days of free time");
+            .text("you have " + time + " hours of free time");
     });
 
     $('#buttonMinutes').click(function () {
@@ -113,7 +115,7 @@ $(document).ready(function () {
         var time = (Math.round(((freeTimeRestOfLife * minutesInHour) * 1000)/10)/100).toFixed(2);
 
         $('#freeTimeSentence')
-            .text("you have " + time + " days of free time");
+            .text("you have " + time + " minutes of free time");
     });
 
 });
