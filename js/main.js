@@ -29,9 +29,6 @@ $(document).ready(function () {
         else if (maleFemale === "female") avgAge = 81;
         else avgAge = (76 + 81) / 2;
 
-        console.log(maleFemale);
-        console.log(avgAge);
-
         // calculate total vacation
         if (vacationWork > 0) freeTimeVacation = (workHours * vacationWork) * (avgAge - age);
         else freeTimeVacation = 0;
