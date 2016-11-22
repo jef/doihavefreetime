@@ -21,7 +21,7 @@ website: https://jef.rocks
     font-weight: bold;
 }
 
-/* Social Icons http://codepen.io/JonDCarey/pen/wAjrx */
+/* http://codepen.io/JonDCarey/pen/wAjrx */
 #social_side_links {
     position: fixed;
     top: 70px;
@@ -56,6 +56,12 @@ body {
     padding-bottom: 15px;
     background-color: #ffffff;
 }
+
+/* http://stackoverflow.com/a/12250084/5648644 */
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
 
 .footer {
     position: absolute;
