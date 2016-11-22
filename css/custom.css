@@ -13,6 +13,10 @@ website: https://jef.rocks
     text-align: center;
 }
 
+.container .text-muted {
+    margin: 20px 0;
+}
+
 #freeTimeSentence {
     font-weight: bold;
 }
@@ -41,9 +45,25 @@ website: https://jef.rocks
     transition: background .2s ease-in-out;
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     margin-bottom: 60px;
+    padding-bottom: 15px;
+    background-color: #ffffff;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f9f9f9;
 }
 
 h1 {
