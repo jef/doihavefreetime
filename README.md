@@ -8,3 +8,6 @@ inspired by [sleepyti.me](http://sleepyti.me/)
 # sources
 [male and female life expectancy](http://www.usatoday.com/story/news/nation/2014/10/08/us-life-expectancy-hits-record-high/16874039/)
 [cigarettes, drugs, alcohol](http://www.mirror.co.uk/news/technology-science/technology/how-much-life-you-lose-4437754)
+
+#special thanks
+[nicholrgUW](https://github.com/nicholrgUW)

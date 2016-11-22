@@ -6,28 +6,11 @@ website: https://jef.rocks
 
 @import url('https://fonts.googleapis.com/css?family=Roboto|Shrikhand');
 
-/* absolute center from: http://codepen.io/shshaw/full/gEiDt*/
-.Absolute-Center {
-    margin: auto;
-    position: absolute;
+.container {
+    width: auto;
+    max-width: 600px;
+    padding: 0 15px;
     text-align: center;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-}
-
-.Absolute-Center.is-Responsive {
-    width: 50%;
-    height: 50%;
-    min-width: 200px;
-    max-width: 400px;
-}
-
-.footer {
-    position: fixed;
-    bottom: -7px;
-    left: 10px;
 }
 
 #freeTimeSentence {
@@ -58,6 +41,11 @@ website: https://jef.rocks
     transition: background .2s ease-in-out;
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 60px;
+}
+
 h1 {
     font-family: 'Shrikhand', cursive;
 }
@@ -66,6 +54,6 @@ h4 {
     color: darkgray !important;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
+input {
+    text-align: center;
 }
