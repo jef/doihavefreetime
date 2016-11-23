@@ -6,7 +6,7 @@ website: https://jef.rocks
 
 $(document).ready(function () {
     var age, workHours, sleep, drinking, smoking, freeTimeInDay, freeTimeInYear, freeTimeRestOfLife,
-        maleFemale, avgAge, vacationWork, chores, retireAge, freeTimeVacation, freeTimeAfterRetire;
+        maleFemale, avgAge, vacationWork, chores, retireAge, commute, freeTimeVacation, freeTimeAfterRetire;
     var daysInYear = 365.25; // days
     var hoursInDay = 24; // hours
     var minutesInHour = 60; // minutes
@@ -20,6 +20,7 @@ $(document).ready(function () {
         vacationWork = $('#vacationWork').val();
         retireAge = $('#retireAge').val();
         chores = $('#chores').val();
+        commute = $('#commute').val();
         drinking = $('#drinking').val();
         smoking = $('#smoking').val();
         maleFemale = $('input[name=maleFemale]:checked').val();
@@ -38,7 +39,7 @@ $(document).ready(function () {
         else freeTimeAfterRetire = 0;
 
         freeTimeInDay = hoursInDay - sleep - (workHours / 7)
-            - (chores / 7) - ((smoking * cigDeath) / 60) - ((drinking * drinkDeath) / 7); // hours
+            - (chores / 7) - (commute / 7) - ((smoking * cigDeath) / 60) - ((drinking * drinkDeath) / 7); // hours
         freeTimeInYear = freeTimeInDay * daysInYear; // hours
         freeTimeRestOfLife = freeTimeInYear * (avgAge - age)
             + freeTimeAfterRetire + freeTimeVacation; // hours
